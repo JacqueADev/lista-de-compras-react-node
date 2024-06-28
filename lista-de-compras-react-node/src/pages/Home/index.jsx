@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { v4 } from "uuid";
+import { AddButton } from './styles'
 
 function Home() {
   const [produtos, setProdutos] = useState([]);
@@ -8,6 +9,7 @@ function Home() {
   function cliqueiNoBotao() {
     console.log(v4());
     setProdutos([{ id: v4(), nome: inputRef.current.value }, ...produtos]);
+    inputRef.current.value = ''
   }
 
   function deletarProduto(id){
@@ -18,7 +20,7 @@ function Home() {
     <div>
       <h1>Comprar:</h1>
       <input placeholder="Produto..." type="text" ref={inputRef} />
-      <button onClick={cliqueiNoBotao}>Adicionar a lista</button>
+      <AddButton onClick={cliqueiNoBotao}>Adicionar a lista</AddButton>
 
       {produtos.map((produto) => (
         <div key={produto.id}>
