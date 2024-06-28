@@ -10,6 +10,10 @@ function Home() {
     setProdutos([{ id: v4(), nome: inputRef.current.value }, ...produtos]);
   }
 
+  function deletarProduto(id){
+    setProdutos(produtos.filter(produto => produto.id !== id))
+  }
+
   return (
     <div>
       <h1>Comprar:</h1>
@@ -17,7 +21,10 @@ function Home() {
       <button onClick={cliqueiNoBotao}>Adicionar a lista</button>
 
       {produtos.map((produto) => (
-        <div key={produto.id}>{produto.nome}</div>
+        <div key={produto.id}>
+          <p>{produto.nome}</p>
+          <button onClick={ () => deletarProduto(produto.id)}>🗑️</button>
+        </div>
       ))}
     </div>
   );
