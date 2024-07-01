@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { v4 } from "uuid";
-import { AddButton } from './styles'
+import { AddButton, Container, Product, Trashbutton } from './styles'
 
 function Home() {
   const [produtos, setProdutos] = useState([]);
@@ -17,21 +17,21 @@ function Home() {
   }
 
   return (
-    <div>
+    <Container>
       <h1>Comprar:</h1>
       <input placeholder="Produto..." type="text" ref={inputRef} />
       <AddButton onClick={cliqueiNoBotao}>Adicionar a lista</AddButton>
 
       {produtos.map((produto) => (
-        <div key={produto.id}>
+        <Product key={produto.id}>
           <p>{produto.nome}</p>
-          <button onClick={ () => deletarProduto(produto.id)}>🗑️</button>
-        </div>
+          <Trashbutton onClick={ () => deletarProduto(produto.id)}>🗑️</Trashbutton>
+        </Product>
       ))}
-    </div>
+    </Container>
   );
 }
 
 export default Home;
 
-//parei minuto 27:47 deste link: https://www.youtube.com/live/3wcjhAZoviA?si=0qFr1qaIfXwRewFH
+//parei minuto 01:14 deste link: https://www.youtube.com/live/3wcjhAZoviA?si=0qFr1qaIfXwRewFH
